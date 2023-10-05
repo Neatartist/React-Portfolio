@@ -345,7 +345,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: relative;
 }
 .skill-bx {
-  background: #151515;
+  background: linear-gradient(90.21deg,rgb(15, 7, 15) -5.91%,purple 111.58%);
   border-radius: 64px;
   text-align: center;
   padding: 60px 50px;
@@ -574,6 +574,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .contact form button:hover::before {
   width: 100%;
+}
+
+.white-text {
+  color: #fff !important;
 }
 
 /************ Footer Css ************/
