@@ -1,6 +1,8 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
+import Html from '../assets/img/html5-logo-31813.png'
+import Java from '../assets/img/javascript-39397.png'
+import React from "../assets/img/logo192.png"
+import Css from '../assets/img/css2.png'
+import Mong from '../assets/img/mongo.png'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import arrow1 from "../assets/img/arrow1.svg";
@@ -37,20 +39,32 @@ export const Skills = () => {
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br></br> Lorem Ipsum has been the industry's standard dummy text.</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                             <div className="item">
-                                <img src={meter1} alt="Image" />
+                                <img src={Java} alt="Image" />
                                 <h5>Web Development</h5>
                             </div>
                             <div className="item">
-                                <img src={meter2} alt="Image" />
+                                <img src={Java} alt="Image" />
                                 <h5>Javascript</h5>
                             </div>
                             <div className="item">
-                                <img src={meter3} alt="Image" />
+                                <img src={React} alt="Image" />
                                 <h5>React</h5>
                             </div>
                             <div className="item">
-                                <img src={meter1} alt="Image" />
+                                <img src={Java} alt="Image" />
                                 <h5>Object-Oriented Programming </h5>
+                            </div>
+                            <div className="item">
+                                <img src={Html} alt="Image" />
+                                <h5>HTML </h5>
+                            </div>
+                            <div className="item">
+                                <img src={Mong} alt="Image" />
+                                <h5>Mongodb </h5>
+                            </div>
+                            <div className="item">
+                                <img src={Css} alt="Image" />
+                                <h5>CSS </h5>
                             </div>
                         </Carousel>
                     </div>
