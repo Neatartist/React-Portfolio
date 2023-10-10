@@ -4,7 +4,8 @@ import projImg1 from "../assets/img/guarded-river-60488-2757545d4c45.herokuapp.c
 import projImg2 from "../assets/img/aqueous-garden-21223-0843a25d5cd3.herokuapp.com_ (1)-min.png";
 // import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2-min.png";
-import resume from '../assets/img/resumescreenshot-min.png';
+import resume from '../assets/img/resumescreenshot-min-min.png';
+
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -26,14 +27,16 @@ export const Projects = () => {
 
   const workExperience = [
     {
-      title: "Law Enforcement Officer",
-      description: "The City of Winter Springs Police Department",
+      title: "E-commerce Website",
+      description: "This is a back-end e-commerce website that uses Express.js API and Sequelize to interact with a MySQL database. The database includes tables for products, categories, tags, and product tags. The user can perform CRUD operations on all tables.",
       imgUrl: projImg1,
+      URL:'',
     },
     {
-      title: "Trash Valet",
-      description: "Worksite LLC.",
+      title: "Weather API website",
+      description: "This is a weather dashboard that was made using the OpenWeather API. The user can search for a city and the current weather and 5 day forecast will be displayed. The user can also click on a city in the search history and the weather will be displayed again.",
       imgUrl: projImg2,
+      URL:'',
     },
   ];
   const Resume = [
@@ -41,6 +44,7 @@ export const Projects = () => {
       title: "Resume",
       description: "Current Resume",
       imgUrl: resume,
+      URL: 'https://app.enhancv.com/share/1c7a4517/?utm_medium=growth&utm_campaign=share-resume&utm_source=dynamic', 
     },
   ];
 
@@ -51,16 +55,16 @@ export const Projects = () => {
           <Col size={12}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__bounce": ""}>
-                <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <div className={isVisible ? "animate__animated animate__fadeIn animate__fast": "animate__animated animate__fadeOutLeft animate__fast"}>
+                <h2>Experience Related Resources</h2>
+                {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> */}
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
                       <Nav.Link eventKey="first">Projects</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="second">Work Experience</Nav.Link>
+                        <Nav.Link eventKey="second">Mini projects</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="third">Resume</Nav.Link>
@@ -116,7 +120,7 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      <img className="background-image-right"  src={colorSharp2} alt="side-color"></img>
     </section>
   )
 }
