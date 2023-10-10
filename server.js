@@ -1,51 +1,93 @@
 const express = require('express');
-const router = express.Router();
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-
-// server used to send emails
-
 const app = express();
-app.use(cors());
-app.use(express.json());
-app.use('/', router);
-app.listen(5000, () => console.log('Server Running'));
+const port = process.env.PORT || 3000;
+require('dotenv').config();
+const path = require('path');
 
-const contactEmail = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'CONTACT_EMAIL',
-    pass: 'CONTACT_PASS',
-  },
+// Middleware
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(express.static(__dirname + './build'));
+
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
 });
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3000/Contact'];
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowedOrigins array or if it's undefined (e.g., a same-origin request)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true, 
+}));
 
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Ready to Send');
+const myEmail = process.env.CONTACT_EMAIL;
+const myPassword = process.env.CONTACT_PASS;
+
+
+
+async function mainMail(name, email, phone, subject, message) {
+  const contactEmail = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: myEmail,
+      pass: myPassword,
+    },
+  });
+
+  const mailOptions = {
+    from: name,
+    to: myEmail,
+    subject: subject,
+    html: `<p>Name: ${name}</p>
+          <p>Email: ${email}</p>
+          <p>Phone: ${phone}</p>
+          <p>Message: ${message}</p>`,
+  };
+  try {
+    await contactEmail.sendMail(mailOptions);
+    return new Promise((resolve) => {
+      resolve('Message Sent Successfully');
+    });
+  } catch (error) {
+    return new Promise((_, reject) => {
+      reject(error);
+    });
+  }
+}
+// app.get('/', (req, res) => {
+//   res.render('index.html');
+// });
+
+// app.get('/contact', (req, res) => {
+//   res.render('contact');
+// });
+
+app.post('/Contact', async (req, res) => {
+  const { name, email, phone, subject, message } = req.body;
+  try {
+    await mainMail(name, email, phone, subject, message);
+    res.status(200).json({ code: 200, message: 'Message sent successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ code: 500, message: 'Something went wrong' });
   }
 });
 
-router.post('/contact', (req, res) => {
-  const name = req.body.firstName + req.body.lastName;
-  const email = req.body.email;
-  const phone = req.body.phone;
-  const message = req.body.message;
-  const mail = {
-    from: name,
-    to: '******@gmail.com',
-    subject: 'Contact Form Submission - Portfolio',
-    html: `<p>Name: ${name}</p>
-    <p>Email: ${email}</p>
-    <p>Phone: ${phone}</p>
-    <p>Message: ${message}</p>`,
-  };
-  contactEmail.sendMail(mail, (error) => {
-    if (error) {
-      res.json({ status: 'ERROR' });
-    } else {
-      res.json({ code: 200, status: 'Message Sent' });
-    }
-  });
+
+
+// server used to send send emails
+
+app.listen(port, () => {
+  console.log(`Server Running on http://localhost:${port}`);
 });
