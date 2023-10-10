@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/header-img.svg";
+import headerImg from "../assets/img/computerbanner.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -11,8 +11,8 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const memoizedValue = useMemo(() => { return [ "Full Stack Web Developer", "Front-end Developer", "Back-end Developer" ] }, []);
-  const period = 100;
+  const memoizedValue = useMemo(() => { return [ "Full Stack", "Front-end", "Back-end" ] }, []);
+  const period = 500;
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -59,19 +59,19 @@ export const Banner = () => {
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__bounce" : ""}>
+              <div className={isVisible ? "animate__animated animate__fadeInLeft animate_fast" : "animate__animated animate__fadeOutLeft"}>
                 <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Daniel Van Kirk a Junior`} <span className="txt-rotate" data-period='500' data-rotate='[ "Full Stack Web Developer", "Front-end Developer", "Back-end Developer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <button onClick={scrollToContacts}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                <h1>{`I'm Daniel Van Kirk, a Junior`} <span className="txt-rotate" data-period='500' data-rotate='[ "Full Stack", "Front-end ", "Back-end " ]'><span className="wrap">{text}</span></span> {`Developer`}</h1>
+                  <p>Hello, this portfolio includes my projects, work experience, and a resume.<br></br> </p>
+                  {/* <button onClick={scrollToContacts}>Let’s Connect <ArrowRightCircle size={25} /></button> */}
               </div>}
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
+                <div className={isVisible ? "animate__animated animate__fadeInRight animate_fast" : "animate_animated animate_fadeOutLeft animate_fast"}>
+                  <img style={{width: '300px'}}src={headerImg} alt="Header Img"/>
                 </div>}
             </TrackVisibility>
           </Col>
