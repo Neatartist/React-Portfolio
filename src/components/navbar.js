@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import navIcon1 from '../assets/img/nav-icon1.svg';
-import navIcon2 from '../assets/img/github-mark-white.png';
-import navIcon3 from '../assets/img/nav-icon3.svg';
+import navIcon2 from '../assets/img/github-mark-white-min.png';
+import Logo from '../assets/img/coding Logo-min.png';
+import { HashLink as Link } from 'react-router-hash-link';
 
-import Logo from '../assets/img/coding Logo.png'
-import { HashLink } from 'react-router-hash-link';
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
 
 export const NavBar = () => {
 
@@ -34,7 +30,6 @@ export const NavBar = () => {
   }
 
   return (
-    <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
@@ -52,17 +47,15 @@ export const NavBar = () => {
             <span className="navbar-text">
               <div className="social-icon">
                 <a href="https://www.linkedin.com/in/daniel-van-kirk-1a0474180/"><img src={navIcon1} alt="" /></a>
-                <a href="#"><img src={navIcon2} alt="" /></a>
-                <a href="#"><img src={navIcon3} alt="" /></a>
-
+                <a href="https://github.com/Neatartist"><img src={navIcon2} alt="" /></a>
+                {/* <a href="#"><img src={navIcon3} alt="" /></a> */}
               </div>
-              <HashLink to='#connect'>
-                <button className="vvd" id='contact'><span>Let’s Connect</span></button>
-              </HashLink>
+              <Link to='#Contact'>
+                <button className="vvd" id='contact'><span>Contact Me</span></button>
+              </Link>
             </span>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </Router>
   )
 }
