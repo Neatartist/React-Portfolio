@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import contactImg from '../assets/img/contact-img.svg';
+// import colorshape from '../assets/img/color-sharp2-min.png'
 import 'animate.css'
 import TrackVisibility from 'react-on-screen';
 
@@ -16,7 +17,8 @@ export const Contact = () => {
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
-  const [status, setStatus] = useState({});
+  const [setStatus] = useState({});
+  const [responseHTML, setResponse] = useState('');
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -25,41 +27,56 @@ export const Contact = () => {
     })
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText('Sending...');
-    let response = await fetch('http://localhost:5000/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-      body: JSON.stringify(formDetails)
-    });
-    setButtonText('Send');
-    let result = response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code === 200) {
-      setStatus({success: true, message: 'Message sent successfully'});
-    } else {
-      setStatus({success: false, message: 'Please try again later'});
+    
+    try {
+      const response = await fetch('http://localhost:3000/Contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(formDetails),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const htmlContent = await response.text();
+      setResponse(htmlContent);
+      // document.getElementById('resultContainer').innerHTML = htmlContent;
+
+      setStatus({ success: true, message: 'Message sent successfully' });
+    } catch (error) {
+      console.error(error);
+      setStatus({
+        success: false,
+        message: 'Error sending the message. Please try again later.',
+      });
+    } finally {
+      setButtonText('Send');
     }
   };
+  
+
 
 return (
-    <section className="contact" id="contact">
+    <section className="contact" id="Contact">
       <Container>
         <Row className="align-items-center">
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us"/>
+                <img className={isVisible ? "animate__animated animate__fadeIn animate_fast" : "animate__animated animate__fadeOutLeft animate__fast"} src={contactImg} alt="Contact Us"/>
               }
             </TrackVisibility>
           </Col>
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                <div className={isVisible ? "animate__animated animate__fadeIn animate_fast" : "animate__animated animate__fadeOutLeft animate__fast"}>
                 <h2>Get In Touch</h2>
                 <form onSubmit={handleSubmit}>
                   <Row>
@@ -88,6 +105,9 @@ return (
           </TrackVisibility>
         </Col>
       </Row>
+      {responseHTML && (
+          <div dangerouslySetInnerHTML={{ __html: responseHTML }} />
+        )}
     </Container>
   </section>
 )
