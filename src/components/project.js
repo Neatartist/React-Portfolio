@@ -2,7 +2,8 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./projectcard";
 import projImg1 from "../assets/img/guarded-river-60488-2757545d4c45.herokuapp.com_-min.png";
 import projImg2 from "../assets/img/aqueous-garden-21223-0843a25d5cd3.herokuapp.com_ (1)-min.png";
-// import projImg3 from "../assets/img/project-img3.png";
+import projImg3 from "../assets/img/weather-dashboard-min.png";
+import projImg4 from "../assets/img/ecommerce.png";
 import colorSharp2 from "../assets/img/color-sharp2-min.png";
 import resume from '../assets/img/resumescreenshot-min-min.png';
 
@@ -27,16 +28,16 @@ export const Projects = () => {
 
   const workExperience = [
     {
-      title: "E-commerce Website",
-      description: "This is a back-end e-commerce website that uses Express.js API and Sequelize to interact with a MySQL database. The database includes tables for products, categories, tags, and product tags. The user can perform CRUD operations on all tables.",
-      imgUrl: projImg1,
-      URL:'',
+      title: "Weather Dashboard",
+      description: "This is a weather dashboard that was made using the OpenWeather API. The user can search for a city and the current weather and 5 day forecast will be displayed. The user can also click on a city in the search history and the weather will be displayed again.",
+      imgUrl: projImg3,
+      URL:'https://neatartist.github.io/weather-dashboard/',
     },
     {
-      title: "Weather API website",
-      description: "This is a weather dashboard that was made using the OpenWeather API. The user can search for a city and the current weather and 5 day forecast will be displayed. The user can also click on a city in the search history and the weather will be displayed again.",
-      imgUrl: projImg2,
-      URL:'',
+      title: "Back-end E-commerce ",
+      description: "This is a back-end e-commerce website that uses Express.js API and Sequelize to interact with a MySQL database. The database includes tables for products, categories, tags, and product tags. The user can perform CRUD operations on all tables.",
+      imgUrl: projImg4,
+      URL:'https://github.com/Neatartist/E_Commerce_Back_End.git',
     },
   ];
   const Resume = [
