@@ -9,7 +9,7 @@ const path = require('path');
 // Middleware
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-app.use(express.static(__dirname + './build'));
+app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.use((req, res, next) => {
@@ -65,13 +65,7 @@ async function mainMail(name, email, phone, subject, message) {
     });
   }
 }
-// app.get('/', (req, res) => {
-//   res.render('index.html');
-// });
 
-// app.get('/contact', (req, res) => {
-//   res.render('contact');
-// });
 
 app.post('/Contact', async (req, res) => {
   const { name, email, phone, subject, message } = req.body;
@@ -84,7 +78,9 @@ app.post('/Contact', async (req, res) => {
   }
 });
 
-
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // server used to send send emails
 
