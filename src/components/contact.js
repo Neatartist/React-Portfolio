@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import contactImg from '../assets/img/contact-img.svg';
-// import colorshape from '../assets/img/color-sharp2-min.png'
 import 'animate.css'
 import TrackVisibility from 'react-on-screen';
 
@@ -69,7 +68,7 @@ return (
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__fadeIn animate_fast" : "animate__animated animate__fadeOutLeft animate__fast"} src={contactImg} alt="Contact Us"/>
+                <img className={isVisible ? "animate__animated animate__fadeIn animate_fast" : "animate__animated animate__fadeOutLeft animate__fast"} src={contactImg} />
               }
             </TrackVisibility>
           </Col>

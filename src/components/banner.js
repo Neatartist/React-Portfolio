@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/computerbanner.png";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -71,7 +70,7 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeInRight animate_fast" : "animate_animated animate_fadeOutLeft animate_fast"}>
-                  <img style={{width: '300px'}}src={headerImg} alt="Header Img"/>
+                  <img style={{width: '300px'}}src={headerImg}/>
                 </div>}
             </TrackVisibility>
           </Col>

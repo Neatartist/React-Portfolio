@@ -121,7 +121,7 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right"  src={colorSharp2} alt="side-color"></img>
+      <img className="background-image-right"  src={colorSharp2} ></img>
     </section>
   )
 }

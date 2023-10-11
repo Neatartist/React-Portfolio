@@ -6,8 +6,6 @@ import Mong from '../assets/img/mongo-min.png'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Node from '../assets/img/Node-min.png';
-// import arrow1 from "../assets/img/arrow1.svg";
-// import arrow2 from "../assets/img/arrow2.svg";
 import SQL from '../assets/img/SQLlogo-min.png';
 import npm from '../assets/img/npm-min.png';
 import jQuery from '../assets/img/jQuerylogo-min.png';
@@ -54,43 +52,43 @@ export const Skills = (props) => {
                     <h2>Skills</h2>
                     <Carousel responsive={responsive} infinite={true} autoPlay={props.deviceType !== "mobile" ? true : false} swipeable={props.deviceType === "mobile" ? true : false} className="owl-carousel owl-theme skill-slider">
                       <div className="item">
-                        <img src={SQL} alt="Image" />
+                        <img src={SQL}  />
                         <h5>MySQL</h5>
                       </div>
                       <div className="item">
-                        <img src={Java} alt="Image" />
+                        <img src={Java}  />
                         <h5>Javascript</h5>
                       </div>
                       <div className="item">
-                        <img src={React} alt="Image" />
+                        <img src={React}  />
                         <h5>React</h5>
                       </div>
                       <div className="item">
-                        <img src={Node} alt="Image" />
+                        <img src={Node}  />
                         <h5>Node.js</h5>  
                       </div>
                       <div className="item">
-                          <img src={Html} alt="Image" />
+                          <img src={Html}  />
                           <h5>HTML </h5>
                       </div>
                       <div className="item">
-                        <img src={Mong} alt="Image" />
+                        <img src={Mong} />
                         <h5>Mongodb </h5>
                       </div>
                       <div className="item">
-                        <img src={Css} alt="Image" />
+                        <img src={Css}  />
                         <h5>CSS </h5>
                       </div>
                       <div className="item">
-                        <img src={npm} alt="Image" />
+                        <img src={npm}  />
                         <h5>NPM </h5>
                       </div>
                       <div className="item">
-                        <img src={Bootstrap} alt="Image" />
+                        <img src={Bootstrap}  />
                         <h5>Bootstrap </h5>
                       </div>
                       <div className="item">
-                        <img src={jQuery} alt="Image" />
+                        <img src={jQuery}  />
                         <h5>jQuery </h5>
                       </div>
                       </Carousel>
@@ -99,7 +97,7 @@ export const Skills = (props) => {
               </TrackVisibility>
             </div>
           </div>
-      <img className="background-image-left" src={colorSharp} alt="Image" />
+      <img className="background-image-left" src={colorSharp}  />
         </div>
       </section>
     </div>
